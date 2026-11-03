@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC8UlEQVR4nO2US0hUURzGZ+beuXPPuoIwNR/zwswXtRCE6LUwR9J0fEOLFiKmEen41pgkgtKQFhYEuojQqFCCFiFupEXSQrOSMgxaFxJYmilf/M/1jHpNtPFeW9QfPgbu4ny/7/+dORbL/wlzOrvTsVp1bclcOw7gz47+OwBihLEAKiiL59KDmgZIh546FmE+wEZGG21gs82EBfC7AwmKvou7oAfQfw8bQL8JceBmyQXgto1XA5C2CmD45TsXJaE6xobhUgW5LhUjOSr6T6ohAD1I9pn9XIZVQAD1cTag5wgWGxVMlaiYuZ1jPsANjw13D1h58q81CtDlBcY6gLFOYLQdswNV+FSmggBb4q3rjPXVhQXwMNkKNCk8OQcgPcjhv587jnMAMjcNYCDFsmLc59PU5cXSTQ8W6hUsNSr4UMLwrojhskvCFY8cAslI282Nw66kN9GKp6kW4HkTN71VlrAGYLZGwcxFBzd/U8C4eUWcss5QD7Sl5CS66bRibjpSt7yBLJ78R52C90UMr/0Mj1IlDKZJuLwMoL+cf7x6kfxjqcoVWn2fDz/vZWIuoCWfLNQA7qfIaPfaUeu0I32PgycVacPufupavnbbRf9dXp78e63CV/62gOFlLsN4HkOre+3qxTnbAphsywKGqtcAfFvunFJP+BnG8hi6MxhqnHZjAET3VQdVfOk8ATwuDCUnTZcw3jt13pciocUt45LTbtyT259k5clnuk9jbrgVeFaB+evuUHJaO2kwzcY7p9QkwwD4zU+yAr1HuegfQJfwVT7DRD5D0CNz5e1TEDAy+WqAC7Ey8CKI+YD2wEwVa6mp64BzJbWhyZudEoIuCfP1Cn92KTmJ/tskemAaXCYkFlMbJ2O6pxKLo1ex0KABUPonZnWtnzsJNtDjU5moYtyvos0lIeiWeN9NZiYXc3iXAwQx5GNoP8TQ7JJRHmtC1xtN5l47yqMlnI+RUBy1A4b6ORspwxfhQGWsHf5Ix84D/HPzC4tCIAxOwLqpAAAAAElFTkSuQmCC">
+<title>Roasted Carrot</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Nunito+Sans:wght@400;600;700&display=swap">
+<style>
+/* Layout: one narrow column — big pixel hero icon, then the cooking recipe, then a hunger/saturation comparison */
+:root {
+  --bg: #f3ece4; --panel: #e4d8cb; --ink: #2b1d14; --muted: #7a6656;
+  --slot: #8b8b8b; --slot-hi: #ffffff; --slot-lo: #373737;
+  --roast: #b8642a; --sat: #e2a83a; --track: #d6c6b6;
+  --display: "Pixelify Sans", "Courier New", monospace;
+  --body: "Nunito Sans", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #1d1712; --panel: #2a211a; --ink: #f1e6da; --muted: #a8927f;
+  --track: #3b2f25; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #1d1712; --panel: #2a211a; --ink: #f1e6da; --muted: #a8927f;
+  --track: #3b2f25; color-scheme: dark }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 40px 64px; }
+a { color: var(--roast); }
+main { max-width: 640px; margin: 0 auto; display: grid; gap: 40px; }
+img.px { image-rendering: pixelated; display: block; }
+h1, h2 { font-family: var(--display); font-weight: 700; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(2.2rem, 7vw, 3.2rem); line-height: 1; }
+h2 { font-size: 1.25rem; }
+p { margin: 0; }
+.eyebrow { font-family: var(--display); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.hero { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+.hero .big { width: 192px; height: 192px; max-width: 100%; filter: drop-shadow(6px 6px 0 rgba(0,0,0,.18)); }
+.hero div { display: grid; gap: 10px; min-width: 0; flex: 1 1 240px; }
+.id { font-family: ui-monospace, monospace; font-size: .85rem; color: var(--muted); }
+section { display: grid; gap: 16px; }
+.slot { width: 72px; height: 72px; background: var(--slot); display: grid; place-items: center; flex: none;
+  box-shadow: inset 4px 4px 0 var(--slot-lo), inset -4px -4px 0 var(--slot-hi); }
+.slot img { width: 48px; height: 48px; }
+.recipe { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; background: var(--panel); padding: 20px; }
+.stack { display: grid; gap: 8px; }
+.arrow { font-family: var(--display); font-size: 2rem; color: var(--muted); }
+.flame { width: 72px; height: 32px; display: grid; place-items: center; font-family: var(--display); color: var(--roast); }
+.where { color: var(--muted); font-size: .95rem; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th { text-align: left; font-family: var(--display); font-weight: 500; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 0 8px 8px 0; }
+td { padding: 10px 8px 10px 0; border-top: 1px solid var(--track); vertical-align: middle; }
+tr.me td { font-weight: 700; }
+.food { display: flex; align-items: center; gap: 10px; }
+.food img { width: 24px; height: 24px; }
+.bar { height: 10px; background: var(--track); width: 100%; min-width: 60px; }
+.bar i { display: block; height: 100%; }
+.num { width: 3.5em; text-align: right; }
+.wrap { overflow-x: auto; }
+.note { color: var(--muted); font-size: .95rem; max-width: 60ch; }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <img class="px big" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC8UlEQVR4nO2US0hUURzGZ+beuXPPuoIwNR/zwswXtRCE6LUwR9J0fEOLFiKmEen41pgkgtKQFhYEuojQqFCCFiFupEXSQrOSMgxaFxJYmilf/M/1jHpNtPFeW9QfPgbu4ny/7/+dORbL/wlzOrvTsVp1bclcOw7gz47+OwBihLEAKiiL59KDmgZIh546FmE+wEZGG21gs82EBfC7AwmKvou7oAfQfw8bQL8JceBmyQXgto1XA5C2CmD45TsXJaE6xobhUgW5LhUjOSr6T6ohAD1I9pn9XIZVQAD1cTag5wgWGxVMlaiYuZ1jPsANjw13D1h58q81CtDlBcY6gLFOYLQdswNV+FSmggBb4q3rjPXVhQXwMNkKNCk8OQcgPcjhv587jnMAMjcNYCDFsmLc59PU5cXSTQ8W6hUsNSr4UMLwrojhskvCFY8cAslI282Nw66kN9GKp6kW4HkTN71VlrAGYLZGwcxFBzd/U8C4eUWcss5QD7Sl5CS66bRibjpSt7yBLJ78R52C90UMr/0Mj1IlDKZJuLwMoL+cf7x6kfxjqcoVWn2fDz/vZWIuoCWfLNQA7qfIaPfaUeu0I32PgycVacPufupavnbbRf9dXp78e63CV/62gOFlLsN4HkOre+3qxTnbAphsywKGqtcAfFvunFJP+BnG8hi6MxhqnHZjAET3VQdVfOk8ATwuDCUnTZcw3jt13pciocUt45LTbtyT259k5clnuk9jbrgVeFaB+evuUHJaO2kwzcY7p9QkwwD4zU+yAr1HuegfQJfwVT7DRD5D0CNz5e1TEDAy+WqAC7Ey8CKI+YD2wEwVa6mp64BzJbWhyZudEoIuCfP1Cn92KTmJ/tskemAaXCYkFlMbJ2O6pxKLo1ex0KABUPonZnWtnzsJNtDjU5moYtyvos0lIeiWeN9NZiYXc3iXAwQx5GNoP8TQ7JJRHmtC1xtN5l47yqMlnI+RUBy1A4b6ORspwxfhQGWsHf5Ix84D/HPzC4tCIAxOwLqpAAAAAElFTkSuQmCC" alt="Roasted Carrot item texture, enlarged">
+    <div>
+      <span class="eyebrow">Roasted Carrots add-on · v1.0.1</span>
+      <h1>Roasted Carrot</h1>
+      <p>Your carrot pile, finally worth eating. Cooks like a potato and fills you up more than one.</p>
+      <span class="id">rc:roasted_carrot</span>
+    </div>
+  </div>
+
+  <section>
+    <h2>How to make it</h2>
+    <div class="recipe">
+      <div class="stack">
+        <div class="slot"><img class="px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAOHRFWHRTb3VyY2UAaHR0cHM6Ly9naXRodWIuY29tL2Rlc3RydWM3aTBuL21pbmVjcmFmdC10ZXh0dXJlcykWrwEAAAAbdEVYdFNvZnR3YXJlAG1pbmVjcmFmdC10ZXh0dXJlc7BCkOcAAAGRSURBVHheYxjxgJHcEDDao/8fWe/bO2/B3IcZT0gyk2mgo4CRUgfIz5ABh4SwijDYqIurroDpv7P+gs2GhRSuEBrwEGAhNgRw+RSXfph6mPyTc8+xKh06IQBP3TMYUFI/etzLGEmCfQoTh8U9LE2gB8PQywUlGkzgEOhIYQd75updSDIy+vsNxXOwkHi4/QlYnFmcGSV3wBQPnRBYZQGJ+6AQTojjJU1RfHz1yHkwf/H+r2C6R/0fis9hIQLLDbA0MXRyAdy7MJ9LWUCEnp0A09rKf8B0LAM3RBwWEgx/wXy4z19C+MxpzOC0NPhDABb36oa8EJ/BfA4LkuenwSxYbrh5/jNUhgklDcBDcCMDuI74Cw2ZoZMGtG0MUeKcAc3nMB+e+gDxEywXMMyC+BgW5wxoYPCGAEbcE4hzuM9v/IO0MW6genXQ1gUE2wOw/A0r6RgYIFpgJR4DAzTOYT5nIA0MvroAvcxHz98Ycc1AGRi8uQDmc2rFNa5wGnxpANbigbm4h8zUTWzKGPAQYBjxAABXvJfX97xT7gAAAABJRU5ErkJggg==" alt="Carrot"></div>
+        <div class="flame">▲▲▲</div>
+        <div class="slot"><img class="px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAOHRFWHRTb3VyY2UAaHR0cHM6Ly9naXRodWIuY29tL2Rlc3RydWM3aTBuL21pbmVjcmFmdC10ZXh0dXJlcykWrwEAAAAbdEVYdFNvZnR3YXJlAG1pbmVjcmFmdC10ZXh0dXJlc7BCkOcAAAGYSURBVHheYxgFIz4EGIkNARkZuf/41D558oiRnNBkGugoYCHkAJjPBQX5wUpZWFC1/PnzB2oEJIRIDYkBDwGc8QbzOScnO9iHAgICYJqZA0L//PIGzP/y5QtKIH7//hPMJzYkBn8agPn8w4cPYJ/x8EDiHBb3PDw8YHFEWoAECCwECYXE4A+Bjy/fg70ESyxfGL5gTRMsPz5gzSWEQmLwhQB66mfn4AD77MePH5CQ+AkpEGFpApo54DkBPS2IigpDc8t3sMYPH16j5LzBmwY4oD7nFpCAxC0s30PTAAdayMCCAD2kYGmGAQcYvCEA8wnDhxcobsflc5gimPzPn99R0owYHz9MCUpaGPzlADwkoO5nhOYCBnZIYob7+CPExz8YILnl18+/YB1sfJDa89enP1hTweANAZiL2dmZwS7/z45accJCAhbXDOghhIOPHgyDtz0gICAKTq387DwojkYPEfSQgin+CU0DMP7Hn5A6ZNCVhARbsrhCAj0uYT5kwAHQfQ5TNnjTALpHYCFBqg8ZCIABDwGGEQ8ALmiaAs7f4eEAAAAASUVORK5CYII=" alt="Coal (any fuel)"></div>
+      </div>
+      <span class="arrow">→</span>
+      <div class="slot"><img class="px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC8UlEQVR4nO2US0hUURzGZ+beuXPPuoIwNR/zwswXtRCE6LUwR9J0fEOLFiKmEen41pgkgtKQFhYEuojQqFCCFiFupEXSQrOSMgxaFxJYmilf/M/1jHpNtPFeW9QfPgbu4ny/7/+dORbL/wlzOrvTsVp1bclcOw7gz47+OwBihLEAKiiL59KDmgZIh546FmE+wEZGG21gs82EBfC7AwmKvou7oAfQfw8bQL8JceBmyQXgto1XA5C2CmD45TsXJaE6xobhUgW5LhUjOSr6T6ohAD1I9pn9XIZVQAD1cTag5wgWGxVMlaiYuZ1jPsANjw13D1h58q81CtDlBcY6gLFOYLQdswNV+FSmggBb4q3rjPXVhQXwMNkKNCk8OQcgPcjhv587jnMAMjcNYCDFsmLc59PU5cXSTQ8W6hUsNSr4UMLwrojhskvCFY8cAslI282Nw66kN9GKp6kW4HkTN71VlrAGYLZGwcxFBzd/U8C4eUWcss5QD7Sl5CS66bRibjpSt7yBLJ78R52C90UMr/0Mj1IlDKZJuLwMoL+cf7x6kfxjqcoVWn2fDz/vZWIuoCWfLNQA7qfIaPfaUeu0I32PgycVacPufupavnbbRf9dXp78e63CV/62gOFlLsN4HkOre+3qxTnbAphsywKGqtcAfFvunFJP+BnG8hi6MxhqnHZjAET3VQdVfOk8ATwuDCUnTZcw3jt13pciocUt45LTbtyT259k5clnuk9jbrgVeFaB+evuUHJaO2kwzcY7p9QkwwD4zU+yAr1HuegfQJfwVT7DRD5D0CNz5e1TEDAy+WqAC7Ey8CKI+YD2wEwVa6mp64BzJbWhyZudEoIuCfP1Cn92KTmJ/tskemAaXCYkFlMbJ2O6pxKLo1ex0KABUPonZnWtnzsJNtDjU5moYtyvos0lIeiWeN9NZiYXc3iXAwQx5GNoP8TQ7JJRHmtC1xtN5l47yqMlnI+RUBy1A4b6ORspwxfhQGWsHf5Ix84D/HPzC4tCIAxOwLqpAAAAAElFTkSuQmCC" alt="Roasted Carrot"></div>
+    </div>
+    <p class="where">Works in a furnace, smoker, campfire or soul campfire.</p>
+  </section>
+
+  <section>
+    <h2>What one gives you</h2>
+    <div class="wrap">
+      <table>
+        <thead><tr><th>Food</th><th class="num">Hunger</th><th></th><th class="num">Saturation</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p class="note">Saturation is what makes your health come back quickly, and a Roasted Carrot gives twice as much as a baked potato.</p>
+  </section>
+  <section>
+    <h2>Install</h2>
+    <p class="note">Download <a href="https://github.com/NicholasAmbrose/RoastedCarrots/raw/main/addon/RoastedCarrots.mcaddon">RoastedCarrots.mcaddon</a> and open it, or upload it to your server. Turn on both the behavior pack and the resource pack for your world.</p>
+  </section>
+</main>
+<script>
+const foods = [
+  ["Carrot", 3, 3.6, "CARROT"],
+  ["Baked potato", 5, 6, null],
+  ["Roasted Carrot", 6, 12, "R", true],
+  ["Golden carrot", 6, 14.4, null],
+];
+document.getElementById("rows").innerHTML = foods.map(([n, h, s, img, me]) => `
+  <tr class="${me ? "me" : ""}">
+    <td><span class="food">${img ? `<img class="px" src="data:image/png;base64,${{CARROT: "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAOHRFWHRTb3VyY2UAaHR0cHM6Ly9naXRodWIuY29tL2Rlc3RydWM3aTBuL21pbmVjcmFmdC10ZXh0dXJlcykWrwEAAAAbdEVYdFNvZnR3YXJlAG1pbmVjcmFmdC10ZXh0dXJlc7BCkOcAAAGRSURBVHheYxjxgJHcEDDao/8fWe/bO2/B3IcZT0gyk2mgo4CRUgfIz5ABh4SwijDYqIurroDpv7P+gs2GhRSuEBrwEGAhNgRw+RSXfph6mPyTc8+xKh06IQBP3TMYUFI/etzLGEmCfQoTh8U9LE2gB8PQywUlGkzgEOhIYQd75updSDIy+vsNxXOwkHi4/QlYnFmcGSV3wBQPnRBYZQGJ+6AQTojjJU1RfHz1yHkwf/H+r2C6R/0fis9hIQLLDbA0MXRyAdy7MJ9LWUCEnp0A09rKf8B0LAM3RBwWEgx/wXy4z19C+MxpzOC0NPhDABb36oa8EJ/BfA4LkuenwSxYbrh5/jNUhgklDcBDcCMDuI74Cw2ZoZMGtG0MUeKcAc3nMB+e+gDxEywXMMyC+BgW5wxoYPCGAEbcE4hzuM9v/IO0MW6genXQ1gUE2wOw/A0r6RgYIFpgJR4DAzTOYT5nIA0MvroAvcxHz98Ycc1AGRi8uQDmc2rFNa5wGnxpANbigbm4h8zUTWzKGPAQYBjxAABXvJfX97xT7gAAAABJRU5ErkJggg==", R: "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC8UlEQVR4nO2US0hUURzGZ+beuXPPuoIwNR/zwswXtRCE6LUwR9J0fEOLFiKmEen41pgkgtKQFhYEuojQqFCCFiFupEXSQrOSMgxaFxJYmilf/M/1jHpNtPFeW9QfPgbu4ny/7/+dORbL/wlzOrvTsVp1bclcOw7gz47+OwBihLEAKiiL59KDmgZIh546FmE+wEZGG21gs82EBfC7AwmKvou7oAfQfw8bQL8JceBmyQXgto1XA5C2CmD45TsXJaE6xobhUgW5LhUjOSr6T6ohAD1I9pn9XIZVQAD1cTag5wgWGxVMlaiYuZ1jPsANjw13D1h58q81CtDlBcY6gLFOYLQdswNV+FSmggBb4q3rjPXVhQXwMNkKNCk8OQcgPcjhv587jnMAMjcNYCDFsmLc59PU5cXSTQ8W6hUsNSr4UMLwrojhskvCFY8cAslI282Nw66kN9GKp6kW4HkTN71VlrAGYLZGwcxFBzd/U8C4eUWcss5QD7Sl5CS66bRibjpSt7yBLJ78R52C90UMr/0Mj1IlDKZJuLwMoL+cf7x6kfxjqcoVWn2fDz/vZWIuoCWfLNQA7qfIaPfaUeu0I32PgycVacPufupavnbbRf9dXp78e63CV/62gOFlLsN4HkOre+3qxTnbAphsywKGqtcAfFvunFJP+BnG8hi6MxhqnHZjAET3VQdVfOk8ATwuDCUnTZcw3jt13pciocUt45LTbtyT259k5clnuk9jbrgVeFaB+evuUHJaO2kwzcY7p9QkwwD4zU+yAr1HuegfQJfwVT7DRD5D0CNz5e1TEDAy+WqAC7Ey8CKI+YD2wEwVa6mp64BzJbWhyZudEoIuCfP1Cn92KTmJ/tskemAaXCYkFlMbJ2O6pxKLo1ex0KABUPonZnWtnzsJNtDjU5moYtyvos0lIeiWeN9NZiYXc3iXAwQx5GNoP8TQ7JJRHmtC1xtN5l47yqMlnI+RUBy1A4b6ORspwxfhQGWsHf5Ix84D/HPzC4tCIAxOwLqpAAAAAElFTkSuQmCC"}[img]}" alt="">` : `<span style="width:24px"></span>`}${n}</span></td>
+    <td class="num">${h}</td><td><div class="bar"><i style="width:${h / 20 * 100}%;background:var(--roast)"></i></div></td>
+    <td class="num">${s}</td><td><div class="bar"><i style="width:${s / 20 * 100}%;background:var(--sat)"></i></div></td>
+  </tr>`).join("");
+</script>
+</body>
+</html>

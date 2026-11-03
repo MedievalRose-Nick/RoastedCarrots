@@ -1,0 +1,12 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "rc:dq_icons",
+      "materials": { "default": "entity_alphatest" },
+      "textures": { "default": "textures/items/roasted_carrot" },
+      "geometry": { "default": "geometry.rc_crate_icon" },
+      "render_controllers": ["controller.render.rc_dq_icons"]
+    }
+  }
+}

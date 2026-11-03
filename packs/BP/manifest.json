@@ -4,9 +4,51 @@
     "name": "Roasted Carrots BP",
     "description": "Cook your carrots.",
     "uuid": "e0b10127-6b58-4c9f-a740-11f4dd5c2a13",
-    "version": [1, 0, 1],
-    "min_engine_version": [1, 21, 90]
+    "version": [
+      1,
+      1,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      90
+    ]
   },
-  "modules": [{ "type": "data", "uuid": "789f913d-e1a6-4741-a402-f38f6d31c0d5", "version": [1, 0, 1] }],
-  "dependencies": [{ "uuid": "0776d81e-0d09-48bb-80a4-06dd8e48383d", "version": [1, 0, 1] }]
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "789f913d-e1a6-4741-a402-f38f6d31c0d5",
+      "version": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "53a22921-2a64-4ac9-815a-265982a59f0f",
+      "entry": "scripts/main.js",
+      "version": [
+        1,
+        1,
+        0
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.0.0"
+    },
+    {
+      "uuid": "0776d81e-0d09-48bb-80a4-06dd8e48383d",
+      "version": [
+        1,
+        1,
+        0
+      ]
+    }
+  ]
 }

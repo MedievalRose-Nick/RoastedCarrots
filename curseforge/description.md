@@ -4,11 +4,12 @@ Your carrot pile, finally worth eating. Cooks like a potato and fills you up mor
 
 Cook a carrot in a **furnace, smoker, campfire or soul campfire** to get a **Roasted Carrot**.
 
-| Food | Hunger | Saturation |
-|---|---|---|
+| Food&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;Hunger&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;Saturation&nbsp;&nbsp;&nbsp; |
+|:---|:---:|:---:|
 | Carrot | 3 | 3.6 |
 | Baked Potato | 5 | 6 |
 | **Roasted Carrot** | **6** | **12** |
+| Golden Carrot | 6 | 14.4 |
 
 High saturation means your health comes back faster after you eat.
 

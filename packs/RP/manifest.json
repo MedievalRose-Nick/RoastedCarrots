@@ -4,8 +4,8 @@
     "name": "Roasted Carrots RP",
     "description": "Cook your carrots.",
     "uuid": "0776d81e-0d09-48bb-80a4-06dd8e48383d",
-    "version": [1, 0, 0],
+    "version": [1, 0, 1],
     "min_engine_version": [1, 21, 90]
   },
-  "modules": [{ "type": "resources", "uuid": "a30a029f-64a5-4f95-906e-0fc4c134216f", "version": [1, 0, 0] }]
+  "modules": [{ "type": "resources", "uuid": "a30a029f-64a5-4f95-906e-0fc4c134216f", "version": [1, 0, 1] }]
 }

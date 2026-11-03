@@ -1,0 +1,5 @@
+{
+  "resource_pack_name": "roasted_carrots",
+  "texture_name": "atlas.items",
+  "texture_data": { "rc_roasted_carrot": { "textures": "textures/items/roasted_carrot" } }
+}

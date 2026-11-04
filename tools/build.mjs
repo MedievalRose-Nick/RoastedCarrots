@@ -50,6 +50,11 @@ fs.mkdirSync(addon, { recursive: true });
 for (const f of fs.readdirSync(addon)) if (f.endsWith(".mcaddon")) fs.rmSync(path.join(addon, f));
 fs.writeFileSync(path.join(addon, out), zip(files));
 console.log(`wrote addon/${out}`);
+// Point the wiki and README download links at this file.
+for (const f of ["docs/index.html", "README.md"]) {
+  const p = path.join(ROOT, f);
+  fs.writeFileSync(p, fs.readFileSync(p, "utf8").replace(/RoastedCarrots(_v[d.]+)?.mcaddon/g, out));
+}
 
 if (process.argv.includes("--deploy")) {
   const mojang = [

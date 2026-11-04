@@ -1,4 +1,4 @@
-// Zips packs/ into addon/RoastedCarrots.mcaddon. `--deploy` also copies the packs into Minecraft's dev pack folders.
+// Zips packs/ into addon/RoastedCarrots_v<BP version>.mcaddon (older ones are removed). `--deploy` also copies the packs into Minecraft's dev pack folders.
 import fs from "node:fs"; import path from "node:path"; import zlib from "node:zlib";
 const ROOT = path.resolve(import.meta.dirname, "..");
 function zip(files) {
@@ -44,9 +44,12 @@ const walk = (dir, prefix) => { for (const e of fs.readdirSync(dir, { withFileTy
   e.isDirectory() ? walk(p, n) : files.push({ name: n, data: fs.readFileSync(p) });
 } };
 for (const k of ["BP", "RP"]) walk(path.join(ROOT, "packs", k), `RoastedCarrots_${k}`);
-fs.mkdirSync(path.join(ROOT, "addon"), { recursive: true });
-fs.writeFileSync(path.join(ROOT, "addon", "RoastedCarrots.mcaddon"), zip(files));
-console.log("wrote addon/RoastedCarrots.mcaddon");
+const out = `RoastedCarrots_v${JSON.parse(fs.readFileSync(path.join(ROOT, "packs", "BP", "manifest.json"))).header.version.join(".")}.mcaddon`;
+const addon = path.join(ROOT, "addon");
+fs.mkdirSync(addon, { recursive: true });
+for (const f of fs.readdirSync(addon)) if (f.endsWith(".mcaddon")) fs.rmSync(path.join(addon, f));
+fs.writeFileSync(path.join(addon, out), zip(files));
+console.log(`wrote addon/${out}`);
 
 if (process.argv.includes("--deploy")) {
   const mojang = [
